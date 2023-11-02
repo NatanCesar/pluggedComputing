@@ -70,6 +70,6 @@ public class addQuestionController implements ActionListener {
         }
         Question q = new Question(header,alternatives,indexCorrectQuestion,typeOfQuestion,manager.getCounterIdQuestions());
         manager.addQuestion(q);
-        JOptionPane.showMessageDialog(mainMenu,"Questão cadastrada com sucesso!");
+        JOptionPane.showMessageDialog(mainMenu,"Questão cadastrada com sucesso!\nID: " + q.getId());
     }
 }

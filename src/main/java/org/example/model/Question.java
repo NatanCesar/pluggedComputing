@@ -8,6 +8,9 @@ public class Question {
     private int indexCorrectQuestion;
     private TypeQuestions typeQuestion;
     private int id;
+    private int quantityCorrectAnsewrs;
+    private int quantityWrongAnsewrs;
+    private int quantityAnsewrs;
 
     public Question(String header, List<String> alternatives, int indexCorrectQuestion, TypeQuestions typeQuestion, int id) {
         this.header = header;
@@ -52,10 +55,37 @@ public class Question {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getQuantityCorrectAnsewrs() {
+        return quantityCorrectAnsewrs;
+    }
+
+    public void addCorrectAnsewrs(int quantityCorrectAnsewrs) {
+        this.quantityCorrectAnsewrs = quantityCorrectAnsewrs + 1;
+    }
+
+    public int getQuantityWrongAnsewrs() {
+        return quantityWrongAnsewrs;
+    }
+
+    public void addWrongAnsewrs(int quantityWrongAnsewrs) {
+        this.quantityWrongAnsewrs++;
+    }
+
+    public int getQuantityAnsewrs() {
+        return quantityAnsewrs;
+    }
+
+    public void addQuantityAnsewrs(int quantityAnsewrs) {
+        this.quantityAnsewrs++;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\nID: " + id + "\n" + header + ".\nAlternativas: " + alternatives + "\nTipo da questão: " +
+                typeQuestion + "\nTotal de respostas: " + quantityAnsewrs + ", Corretas: " + quantityCorrectAnsewrs
+                + ", Erradas: " + quantityWrongAnsewrs;
     }
 }

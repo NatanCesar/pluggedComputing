@@ -26,31 +26,28 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
     /// QUESTIONS:
     @Override
     public void addQuestion(Question question) {
-        counterIdQuestions++;
         this.questionsMap.put(this.counterIdQuestions,question);
+        this.counterIdQuestions++;
+
     }
 
     @Override
     public void removeQuestion(int idQuestion) throws QuestionNoExistException {
-        counterIdQuestions--;
         questionsMap.remove(idQuestion);
-    }
-
-    @Override
-    public Question alterQuestion(int idQuestion) throws QuestionNoExistException {
-        return questionsMap.get(idQuestion);
+        counterIdQuestions--;
     }
 
     @Override
     public Question searchQuestion(int idQuestion) throws QuestionNoExistException {
-        return questionsMap.get(idQuestion);
+        if (this.questionsMap.containsKey(idQuestion)){
+            return questionsMap.get(idQuestion);
+        } else{
+            throw new QuestionNoExistException("Não existe nenhuma questão com esse ID");
+        }
+
+
     }
 
-    @Override
-    public Question sortQuestion() throws EmptyQuestionsException {
-        Random random = new Random();
-        return questionsMap.get(random.nextInt(1,counterIdQuestions));
-    }
 
 
 
@@ -58,26 +55,26 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
     /// USERS:
     @Override
     public void addUser(User user) {
-        counterIdUsers++;
         usersMap.put(this.counterIdUsers,user);
+        counterIdUsers++;
 
     }
 
     @Override
     public void removeUser(int idUser) throws UserNoExistException {
-        counterIdUsers--;
         usersMap.remove(idUser);
+        counterIdUsers--;
     }
-
-    @Override
-    public User alterUser(int idUser) throws UserNoExistException {
-        return usersMap.get(idUser);
-    }
-
     @Override
     public User searchUser(int idUser) throws UserNoExistException {
-        return usersMap.get(idUser);
+        if (this.usersMap.containsKey(idUser)){
+            return usersMap.get(idUser);
+        } else{
+            throw new UserNoExistException("Não existe nenhum usuário com esse ID");
+        }
     }
+
+
 
 
     public int getCounterIdQuestions() {
@@ -88,19 +85,13 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
         return counterIdUsers;
     }
 
-    public HashMap<Integer, Question> getQuestionsMap() {
+    public HashMap<Integer, Question> getAllQuestions() {
         return questionsMap;
     }
 
-    public void setQuestionsMap(HashMap<Integer, Question> questionsMap) {
-        this.questionsMap = questionsMap;
-    }
-
-    public HashMap<Integer, User> getUsersMap() {
+    public HashMap<Integer, User> getAllUsers() {
         return usersMap;
     }
 
-    public void setUsersMap(HashMap<Integer, User> usersMap) {
-        this.usersMap = usersMap;
-    }
+
 }
