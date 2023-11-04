@@ -8,9 +8,9 @@ public class Question {
     private int indexCorrectQuestion;
     private TypeQuestions typeQuestion;
     private int id;
-    private int quantityCorrectAnsewrs;
-    private int quantityWrongAnsewrs;
-    private int quantityAnsewrs;
+    private int quantityCorrectAnswers;
+    private int quantityWrongAnswers;
+    private int quantityAnswers;
 
     public Question(String header, List<String> alternatives, int indexCorrectQuestion, TypeQuestions typeQuestion, int id) {
         this.header = header;
@@ -58,34 +58,41 @@ public class Question {
         return this.id;
     }
 
-    public int getQuantityCorrectAnsewrs() {
-        return quantityCorrectAnsewrs;
+    public int getQuantityCorrectAnswers() {
+        return quantityCorrectAnswers;
     }
 
-    public void addCorrectAnsewrs(int quantityCorrectAnsewrs) {
-        this.quantityCorrectAnsewrs = quantityCorrectAnsewrs + 1;
+    public void addCorrectAnsewrs() {
+        this.quantityCorrectAnswers = quantityCorrectAnsewrs + 1;
     }
 
-    public int getQuantityWrongAnsewrs() {
-        return quantityWrongAnsewrs;
+    public int getQuantityWrongAnswers() {
+        return quantityWrongAnswers;
     }
 
-    public void addWrongAnsewrs(int quantityWrongAnsewrs) {
-        this.quantityWrongAnsewrs++;
+    public void addWrongAnswers() {
+        this.quantityWrongAnswers++;
     }
 
-    public int getQuantityAnsewrs() {
-        return quantityAnsewrs;
+    public int getQuantityAnswers() {
+        return quantityAnswers;
     }
 
-    public void addQuantityAnsewrs(int quantityAnsewrs) {
-        this.quantityAnsewrs++;
+    public void addQuantityAnswers() {
+        this.quantityAnswers++;
     }
 
     @Override
     public String toString() {
         return "\n\nID: " + id + "\n" + header + ".\nAlternativas: " + alternatives + "\nTipo da questão: " +
-                typeQuestion + "\nTotal de respostas: " + quantityAnsewrs + ", Corretas: " + quantityCorrectAnsewrs
-                + ", Erradas: " + quantityWrongAnsewrs;
+                typeQuestion + "\nTotal de respostas: " + quantityAnswers + ", Corretas: " + quantityCorrectAnswers
+                + ", Erradas: " + quantityWrongAnswers;
+    }
+    public String showQuestion(){
+        String alternativesString = "";
+        for (int i = 1; i <= this.alternatives.size(); i++){
+            alternativesString += ("\n" + alternativesString + i + " - " + this.getAlternatives().get(i-1));
+        }
+        return header + "\n" + alternativesString;
     }
 }

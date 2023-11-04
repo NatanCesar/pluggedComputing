@@ -1,4 +1,3 @@
-import com.sun.source.tree.AssertTree;
 import org.example.ManagerPluggedComputing;
 import org.example.ManagerPluggedComputingInterface;
 import org.example.exceptions.QuestionNoExistException;
@@ -73,20 +72,20 @@ public class ManagerPluggedComputingTest {
     @Test
     public void testAddUser() {
         ManagerPluggedComputingInterface manager = new ManagerPluggedComputing();
-        User user = new User("Natan", 20,"Graduando",manager.getCounterIdUsers());
+        User user = new User("Natan", 20,"Graduando","UFPB","natan.br",manager.getCounterIdUsers());
         manager.addUser(user);
         assertTrue(manager.getAllUsers().size() == 1);
         try {
-            assertTrue(manager.searchUser(user.getId()).getIdade() == 20);
+            assertTrue(manager.searchUser(user.getId()).getAge() == 20);
         }catch (UserNoExistException u){
             fail();
         }
 
-        User user2 = new User("Natan", 23,"Graduando",manager.getCounterIdUsers());
+        User user2 = new User("Natan", 23,"Graduando","UFPB","natan.br",manager.getCounterIdUsers());
         manager.addUser(user2);
         assertTrue(manager.getAllUsers().size() == 2);
         try {
-            assertTrue(manager.searchUser(2).getIdade() == 23);
+            assertTrue(manager.searchUser(2).getAge() == 23);
         }catch (UserNoExistException u){
             fail();
         }
@@ -94,7 +93,7 @@ public class ManagerPluggedComputingTest {
     @Test
     public void testRemoveUser() {
         ManagerPluggedComputingInterface manager = new ManagerPluggedComputing();
-        User user = new User("Natan", 20,"Graduando",manager.getCounterIdUsers());
+        User user = new User("Natan", 20,"Graduando","UFPB","natan.br",manager.getCounterIdUsers());
         manager.addUser(user);
         assertTrue(manager.getAllUsers().size() == 1);
         try {
@@ -106,7 +105,7 @@ public class ManagerPluggedComputingTest {
         try {
             manager.addUser(user);;
             assertTrue(manager.getAllUsers().size() == 1);
-            assertTrue(manager.searchUser(1).getIdade() == 20);
+            assertTrue(manager.searchUser(1).getAge() == 20);
         } catch (UserNoExistException u){
             fail();
         }
@@ -115,12 +114,12 @@ public class ManagerPluggedComputingTest {
     @Test
     public void testAlterUser() {
         ManagerPluggedComputingInterface manager = new ManagerPluggedComputing();
-        User user = new User("Natan", 20,"Graduando",manager.getCounterIdUsers());
+        User user = new User("Natan", 20,"Graduando","UFPB","natan.br",manager.getCounterIdUsers());
         manager.addUser(user);
         try {
-            assertTrue(manager.searchUser(1).getNome() == "Natan");
-            manager.searchUser(1).setNome("Ayla");
-            assertTrue(manager.searchUser(1).getNome() == "Ayla");
+            assertTrue(manager.searchUser(1).getName() == "Natan");
+            manager.searchUser(1).setName("Ayla");
+            assertTrue(manager.searchUser(1).getName() == "Ayla");
         }catch (UserNoExistException a){
             fail();
         }

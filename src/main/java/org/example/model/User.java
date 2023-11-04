@@ -1,34 +1,22 @@
 package org.example.model;
 
 public class User {
-    private String nome;
-    private int idade;
-    private String grauEscolaridade;
-    private String insistuicaoAtual;
+    private String name;
+    private int age;
+    private String educationDegree;
+    private String actualInstitution;
     private String email;
     private int id;
+    private int quantityCorrectAnsewrs;
+    private int quantityWrongAnsewrs;
+    private int quantityAnsewrs;
 
 
-    public User(String nome, int idade, String grauEscolaridade, int id) {
-        this.nome = nome;
-        this.idade = idade;
-        this.grauEscolaridade = grauEscolaridade;
-        this.id = id;
-    }
-
-    public User(String nome, int idade, String grauEscolaridade, String insistuicaoAtual, int id) {
-        this.nome = nome;
-        this.idade = idade;
-        this.grauEscolaridade = grauEscolaridade;
-        this.insistuicaoAtual = insistuicaoAtual;
-        this.id = id;
-    }
-
-    public User(String nome, int idade, String grauEscolaridade, String insistuicaoAtual, String email, int id) {
-        this.nome = nome;
-        this.idade = idade;
-        this.grauEscolaridade = grauEscolaridade;
-        this.insistuicaoAtual = insistuicaoAtual;
+    public User(String name, int age, String educationDegree, String actualInstitution, String email, int id) {
+        this.name = name;
+        this.age = age;
+        this.educationDegree = educationDegree;
+        this.actualInstitution = actualInstitution;
         this.email = email;
         this.id = id;
     }
@@ -36,36 +24,36 @@ public class User {
 
 
     /// GET & SET:
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getIdade() {
-        return idade;
+    public int getAge() {
+        return age;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getGrauEscolaridade() {
-        return grauEscolaridade;
+    public String getEducationDegree() {
+        return educationDegree;
     }
 
-    public void setGrauEscolaridade(String grauEscolaridade) {
-        this.grauEscolaridade = grauEscolaridade;
+    public void setEducationDegree(String educationDegree) {
+        this.educationDegree = educationDegree;
     }
 
-    public String getInsistuicaoAtual() {
-        return insistuicaoAtual;
+    public String getActualInstitution() {
+        return actualInstitution;
     }
 
-    public void setInsistuicaoAtual(String insistuicaoAtual) {
-        this.insistuicaoAtual = insistuicaoAtual;
+    public void setActualInstitution(String actualInstitution) {
+        this.actualInstitution = actualInstitution;
     }
 
     public String getEmail() {
@@ -82,5 +70,12 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\nID: " + id + ", nome: " + name + ", " + age + " anos" + ", email: " + email +"\nGrau de escolaridade: " + educationDegree + ", Instituição atual de ensino: " +
+                actualInstitution + "\nQuantidade de perguntas respondidas: " + quantityAnsewrs + ", corretas: " + quantityCorrectAnsewrs
+                + ", erradas: " + quantityWrongAnsewrs;
     }
 }

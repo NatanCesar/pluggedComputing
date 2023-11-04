@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class MainMenuGUI extends JFrame {
     JLabel tittle;
-    JButton ininitQuiz;
+    JButton startQuiz;
     JMenuBar menuBar = new JMenuBar();
     ManagerPluggedComputingInterface manager = new ManagerPluggedComputing();
 
@@ -28,15 +28,16 @@ public class MainMenuGUI extends JFrame {
         setLayout(new GridLayout(3, 1));
         add(tittle);
 
+        startQuiz = new JButton("INICIAR");
+        startQuiz.addActionListener(new quizController(manager,this));
+        startQuiz.setBorder(null);
+        add(startQuiz);
+
         // Register
         JMenu menuRegister = new JMenu("Cadastrar");
         JMenuItem menuRegisterQuestion = new JMenuItem(
                 "Cadastrar Questão");
-        JMenuItem menuRegisterUser = new JMenuItem(
-                "Cadastrar Usuário");
         menuRegister.add(menuRegisterQuestion);
-        menuRegister.add(menuRegisterUser);
-        menuRegisterUser.addActionListener(new addUserController(manager, this));
         menuRegisterQuestion.addActionListener(new addQuestionController(manager, this));
 
         // Search

@@ -4,6 +4,7 @@ import org.example.ManagerPluggedComputing;
 import org.example.ManagerPluggedComputingInterface;
 import org.example.model.Question;
 import org.example.model.TypeQuestions;
+import org.example.model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +26,6 @@ public class addQuestionController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         String header = JOptionPane.showInputDialog(mainMenu,"Qual o cabeçario/pergunta da questão?");
 
         TypeQuestions typeOfQuestion = null;
@@ -72,4 +72,5 @@ public class addQuestionController implements ActionListener {
         manager.addQuestion(q);
         JOptionPane.showMessageDialog(mainMenu,"Questão cadastrada com sucesso!\nID: " + q.getId());
     }
+
 }

@@ -21,6 +21,8 @@ public interface ManagerPluggedComputingInterface extends Serializable {
         void addUser(User user);
         void removeUser(int idUser) throws UserNoExistException;
         User searchUser(int idUser) throws UserNoExistException;
+        HashMap<Integer,User> filterUserName(String name) throws UserNoExistException;
+        HashMap<Integer,User> filterUserAge(int age) throws UserNoExistException;
         HashMap<Integer, User> getAllUsers();
 
         int getCounterIdUsers();

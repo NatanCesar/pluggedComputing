@@ -74,6 +74,35 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
         }
     }
 
+    @Override
+    public HashMap<Integer,User> filterUserName(String name) throws UserNoExistException{
+        HashMap<Integer,User> usersName = new HashMap<>();
+        for (User u: usersMap.values()){
+            if (u.getName().toLowerCase().equals(name.toLowerCase())){
+                usersName.put(u.getId(),u);
+            }
+        }
+        if (usersName == null){
+            throw new UserNoExistException("Nenhum usuário com esse nome foi encontrado.");
+        } else{
+            return usersName;
+        }
+    }
+    public HashMap<Integer,User> filterUserAge(int age) throws UserNoExistException{
+        HashMap<Integer,User> allUsersAge = new HashMap<>();
+        for (User u: usersMap.values()){
+            if (u.getAge() == age){
+                allUsersAge.put(u.getId(),u);
+            }
+        }
+        if (allUsersAge == null){
+            throw new UserNoExistException("Nenhum usuário com essa idade foi encontrado.");
+        } else{
+            return allUsersAge;
+        }
+
+    }
+
 
 
 
