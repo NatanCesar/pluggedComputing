@@ -1,6 +1,8 @@
 package org.example.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String name;
     private int age;
     private String educationDegree;
@@ -70,6 +72,40 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getQuantityCorrectAnsewrs() {
+        return quantityCorrectAnsewrs;
+    }
+
+    public void setQuantityCorrectAnsewrs(int quantityCorrectAnsewrs) {
+        this.quantityCorrectAnsewrs = quantityCorrectAnsewrs;
+    }
+
+    public int getQuantityWrongAnsewrs() {
+        return quantityWrongAnsewrs;
+    }
+
+    public void setQuantityWrongAnsewrs(int quantityWrongAnsewrs) {
+        this.quantityWrongAnsewrs = quantityWrongAnsewrs;
+    }
+
+    public int getQuantityAnsewrs() {
+        return quantityAnsewrs;
+    }
+
+    public void setQuantityAnsewrs(int quantityAnsewrs) {
+        this.quantityAnsewrs = quantityAnsewrs;
+    }
+    ///
+
+    public void addCorrectAnsewrs() {
+        this.quantityCorrectAnsewrs++;
+        this.quantityAnsewrs++;
+    }
+    public void addWrongAnsewrs() {
+        this.quantityWrongAnsewrs++;
+        this.quantityAnsewrs++;
     }
 
     @Override

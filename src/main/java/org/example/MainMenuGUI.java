@@ -30,7 +30,6 @@ public class MainMenuGUI extends JFrame {
 
         startQuiz = new JButton("INICIAR");
         startQuiz.addActionListener(new quizController(manager,this));
-        startQuiz.setBorder(null);
         add(startQuiz);
 
         // Register

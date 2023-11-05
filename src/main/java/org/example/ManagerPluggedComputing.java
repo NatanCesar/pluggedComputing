@@ -5,11 +5,12 @@ import org.example.exceptions.UserNoExistException;
 import org.example.model.Question;
 import org.example.model.User;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
 
 
-public class ManagerPluggedComputing implements ManagerPluggedComputingInterface {
+public class ManagerPluggedComputing implements ManagerPluggedComputingInterface, Serializable {
     HashMap<Integer, Question> questionsMap;
     HashMap<Integer, User> usersMap;
 

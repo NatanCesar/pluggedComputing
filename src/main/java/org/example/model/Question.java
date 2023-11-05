@@ -1,8 +1,9 @@
 package org.example.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question {
+public class Question implements Serializable {
     private String header;
     private List<String> alternatives;
     private int indexCorrectQuestion;
@@ -63,14 +64,15 @@ public class Question {
     }
 
     public void addCorrectAnsewrs() {
-        this.quantityCorrectAnswers = quantityCorrectAnsewrs + 1;
+        this.quantityCorrectAnswers++;
+        this.quantityAnswers++;
     }
-
     public int getQuantityWrongAnswers() {
         return quantityWrongAnswers;
     }
 
     public void addWrongAnswers() {
+        this.quantityAnswers++;
         this.quantityWrongAnswers++;
     }
 
@@ -78,9 +80,6 @@ public class Question {
         return quantityAnswers;
     }
 
-    public void addQuantityAnswers() {
-        this.quantityAnswers++;
-    }
 
     @Override
     public String toString() {
@@ -91,7 +90,7 @@ public class Question {
     public String showQuestion(){
         String alternativesString = "";
         for (int i = 1; i <= this.alternatives.size(); i++){
-            alternativesString += ("\n" + alternativesString + i + " - " + this.getAlternatives().get(i-1));
+            alternativesString += ("\n" + i + " - " + this.getAlternatives().get(i-1));
         }
         return header + "\n" + alternativesString;
     }

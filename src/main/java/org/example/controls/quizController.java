@@ -47,18 +47,19 @@ public class quizController implements ActionListener {
     public void quizManager(User user){
         HashMap<Integer, Question> allQuestions = manager.getAllQuestions();
         for (Question q: allQuestions.values()){
-            int answer= Integer.parseInt(JOptionPane.showInputDialog(mainMenu, q.showQuestion()));
+            int answer= Integer.parseInt(JOptionPane.showInputDialog(mainMenu, q.showQuestion() + "\nDigite o número da alternativa correta."));
 
             if (answer == q.getIndexCorrectQuestion()){
                 JOptionPane.showMessageDialog(mainMenu,"Parabéns, você acertou!");
-                q.addQuantityAnswers();
                 q.addCorrectAnsewrs();
+                user.addCorrectAnsewrs();
             } else{
                 JOptionPane.showMessageDialog(mainMenu,"Você errou!");
-                q.addQuantityAnswers();
                 q.addWrongAnswers();
+                user.addWrongAnsewrs();
             }
     }
+        JOptionPane.showMessageDialog(mainMenu,"Parabéns, você respondeu todo o quiz!");
     }
 
     public User addUser() {
@@ -67,7 +68,7 @@ public class quizController implements ActionListener {
         int idade = Integer.parseInt(JOptionPane.showInputDialog(mainMenu,"Qual a idade? "));
         String grauEscolaridade = JOptionPane.showInputDialog(mainMenu,"Qual o grau de escolaridade atual?");
         String insituicaoAtual = JOptionPane.showInputDialog(mainMenu,"Se está estudando em alguma instituição no momento informe qual: \n(se nenhuma, so aperte OK)");
-        int perguntaEmail = Integer.parseInt(JOptionPane.showInputDialog(mainMenu,"1 - SIM\n2 - NÃO\nDeseja cadastrar seu email? "));
+        int perguntaEmail = Integer.parseInt(JOptionPane.showInputDialog(mainMenu,"1 - SIM\n(se não, so aperte OK)\nDeseja cadastrar seu email? "));
         String email = "";
         if (perguntaEmail == 1) {
             email = JOptionPane.showInputDialog(mainMenu, "Digite seu email:");
