@@ -67,12 +67,8 @@ public class quizController implements ActionListener {
         String nome = JOptionPane.showInputDialog(mainMenu,"Qual o nome de usuário?");
         int idade = Integer.parseInt(JOptionPane.showInputDialog(mainMenu,"Qual a idade? "));
         String grauEscolaridade = JOptionPane.showInputDialog(mainMenu,"Qual o grau de escolaridade atual?");
-        String insituicaoAtual = JOptionPane.showInputDialog(mainMenu,"Se está estudando em alguma instituição no momento informe qual: \n(se nenhuma, so aperte OK)");
-        int perguntaEmail = Integer.parseInt(JOptionPane.showInputDialog(mainMenu,"1 - SIM\n(se não, so aperte OK)\nDeseja cadastrar seu email? "));
-        String email = "";
-        if (perguntaEmail == 1) {
-            email = JOptionPane.showInputDialog(mainMenu, "Digite seu email:");
-        }
+        String insituicaoAtual = JOptionPane.showInputDialog(mainMenu,"Se está estudando em alguma instituição no momento informe qual: \n(Se nenhuma, apenas clique em OK)");
+        String email = JOptionPane.showInputDialog(mainMenu, "Digite seu email:\n(Se não deseja informar, apenas clique em OK");
         User user = new User(nome,idade,grauEscolaridade,insituicaoAtual,email,manager.getCounterIdUsers());
         manager.addUser(user);
         JOptionPane.showMessageDialog(mainMenu,"Usuário cadastrado com sucesso com o ID: " + user.getId());

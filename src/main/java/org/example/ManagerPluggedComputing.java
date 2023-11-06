@@ -34,8 +34,13 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
 
     @Override
     public void removeQuestion(int idQuestion) throws QuestionNoExistException {
-        questionsMap.remove(idQuestion);
-        counterIdQuestions--;
+        if (questionsMap.containsKey(idQuestion)){
+            questionsMap.remove(idQuestion);
+            counterIdQuestions--;
+        } else {
+            throw new QuestionNoExistException("Não existe nenhuma Questão com esse ID");
+        }
+
     }
 
     @Override

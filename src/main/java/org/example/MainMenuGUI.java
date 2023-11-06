@@ -61,10 +61,22 @@ public class MainMenuGUI extends JFrame {
         menuRemoveUser.addActionListener(new removeUserController(manager, this));
         menuRemoveQuestion.addActionListener(new removeQuestionController(manager, this));
 
+        // Alter
+        JMenu menuAlter = new JMenu("Alterar");
+        JMenuItem menuAlterQuestion = new JMenuItem(
+                "Alterar Questão");
+        JMenuItem menuAlterUser = new JMenuItem(
+                "Alterar Usuário");
+        menuAlter.add(menuAlterQuestion);
+        menuAlter.add(menuAlterUser);
+        menuAlterQuestion.addActionListener(new alterQuestionController(manager, this));
+        menuAlterUser.addActionListener(new alterUserController(manager, this));
+
 
         menuBar.add(menuRegister);
         menuBar.add(menuSearch);
         menuBar.add(menuRemove);
+        menuBar.add(menuAlter);
         setJMenuBar(menuBar);
 
     }
