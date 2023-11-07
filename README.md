@@ -9,3 +9,12 @@ Aplicação que cadastra Questões e Usuário, sendo possível responder as perg
   - Responder as questões
   - Ver quantidade de respostas, acertos e erros da questão ou do usuário.
 </p>
+
+<h2>Atualizações futuras:</h2>
+<p>
+  - Sistema de login e senha, diferenciando usuário e admin;\n
+  - Dois menus diferente para user e admin, com funcionalidades diferentes;\n
+  - Integrar a um banco de dados;\n
+  - Gráficos informátivo sobre as questões e o usuário;\n
+  - Uma interface gráfica melhorada, mais intuitiva e bonita.
+</p>
