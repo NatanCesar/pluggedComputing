@@ -6,6 +6,7 @@ Aplicação que cadastra questões e usuários, sendo possível responder as que
   - Alterar informações dos Usuários e Questões;<br>
   - Pesquisar Usuário (por nome, idade, id);<br>
   - Pesquisar Questões (por id e tipo);<br>
+  - Apagar questões ou usuários;<br>
   - Responder as questões;<br>
   - Saber informações da questão: quantidade de respostas, acertos e erros;<br>
   - Saber informações do usuário: quantidade de questões respondidas, acertos e erros.
