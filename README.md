@@ -1,20 +1,21 @@
 # pluggedComputing
-Aplicação que cadastra Questões e Usuário, sendo possível responder as perguntas e saber os resultados individualmente de cada usuário.
+Aplicação que cadastra questões e usuários, sendo possível responder as questões e saber os resultado individual de cada usuário e questão.
 <h2>Funcionalidades:</h2>
 <p>
-  - Cadastrar Usuários e Questões;<br>
-  - Alterar Usuários e Questões;<br>
+  - Cadastra Usuários e Questões;<br>
+  - Alterar informações dos Usuários e Questões;<br>
   - Pesquisar Usuário (por nome, idade, id);<br>
   - Pesquisar Questões (por id e tipo);<br>
   - Responder as questões;<br>
-  - Ver quantidade de respostas, acertos e erros da questão ou do usuário.
+  - Saber informações da questão: quantidade de respostas, acertos e erros;<br>
+  - Saber informações do usuário: quantidade de questões respondidas, acertos e erros.
 </p>
 
 <h2>Atualizações futuras:</h2>
 <p>
-  - Sistema de login e senha, diferenciando usuário e admin;<br>
-  - Dois menus diferente para user e admin, com funcionalidades diferentes;<br>
-  - Integrar a um banco de dados;<br>
+  - Sistema de login e senha, diferenciando user e admin;<br>
+  - Duas interfaces diferente para user e admin, com funcionalidades diferentes;<br>
+  - Integrar banco de dados;<br>
   - Gráficos informátivo sobre as questões e o usuário;<br>
   - Uma interface gráfica melhorada, mais intuitiva e bonita.
 </p>
