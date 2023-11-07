@@ -2,7 +2,7 @@
 Aplicação que cadastra questões e usuários, sendo possível responder as questões e saber os resultado individual de cada usuário e questão.
 <h2>Funcionalidades:</h2>
 <p>
-  - Cadastra Usuários e Questões;<br>
+  - Cadastrar Usuários e Questões;<br>
   - Alterar informações dos Usuários e Questões;<br>
   - Pesquisar Usuário (por nome, idade, id);<br>
   - Pesquisar Questões (por id e tipo);<br>
