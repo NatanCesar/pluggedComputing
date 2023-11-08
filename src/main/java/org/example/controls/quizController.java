@@ -47,7 +47,7 @@ public class quizController implements ActionListener {
     public void quizManager(User user){
         HashMap<Integer, Question> allQuestions = manager.getAllQuestions();
         for (Question q: allQuestions.values()){
-            int answer= Integer.parseInt(JOptionPane.showInputDialog(mainMenu, q.showQuestion() + "\nDigite o número da alternativa correta."));
+            int answer= Integer.parseInt(JOptionPane.showInputDialog(mainMenu, q.showQuestion() + "\n\nDigite o número da alternativa correta.\n"));
 
             if (answer == q.getIndexCorrectQuestion()){
                 JOptionPane.showMessageDialog(mainMenu,"Parabéns, você acertou!");

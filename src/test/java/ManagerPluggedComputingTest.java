@@ -2,14 +2,28 @@ import org.example.ManagerPluggedComputing;
 import org.example.ManagerPluggedComputingInterface;
 import org.example.exceptions.QuestionNoExistException;
 import org.example.exceptions.UserNoExistException;
+import org.example.gravadorDeDados.gravadorDeDados;
 import org.example.model.*;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ManagerPluggedComputingTest {
+
+    @BeforeEach
+    public void deleteFiles(){
+        File fd = new File(gravadorDeDados.FILE_QUESTIONS);
+        File fr = new File(gravadorDeDados.FILE_USERS);
+        if (fr.exists() && fd.exists() ){
+            fr.delete();
+            fd.delete();
+        }
+    }
 
     /// QUESTIONS TEST:
     @Test

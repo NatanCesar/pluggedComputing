@@ -1,15 +1,20 @@
 package org.example;
 
 import org.example.controls.*;
+import org.example.gravadorDeDados.gravadorDeDados;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class MainMenuGUI extends JFrame {
     JLabel tittle;
     JButton startQuiz;
     JMenuBar menuBar = new JMenuBar();
     ManagerPluggedComputingInterface manager = new ManagerPluggedComputing();
+    gravadorDeDados gravador = new gravadorDeDados();
 
 
     public MainMenuGUI() {
@@ -28,9 +33,14 @@ public class MainMenuGUI extends JFrame {
         setLayout(new GridLayout(3, 1));
         add(tittle);
 
+
+        // Button
+        JPanel panel = new JPanel();
         startQuiz = new JButton("INICIAR");
+        panel.add(startQuiz);
+        startQuiz.setPreferredSize(new Dimension(200,100));
         startQuiz.addActionListener(new quizController(manager,this));
-        add(startQuiz);
+        add(panel);
 
         // Register
         JMenu menuRegister = new JMenu("Cadastrar");
@@ -78,6 +88,23 @@ public class MainMenuGUI extends JFrame {
         menuBar.add(menuRemove);
         menuBar.add(menuAlter);
         setJMenuBar(menuBar);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e){
+                int resp = JOptionPane.showConfirmDialog(null,
+                        "Tem certeza de que quer sair e salvar?");
+                if (resp == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null,"Salvo.");
+                    try {
+                        gravador.saveQuestions(manager.getAllQuestions());
+                        gravador.saveUsers(manager.getAllUsers());
+                    } catch (IOException ex) {
+                        ex.fillInStackTrace();
+                    }
+                    System.exit(0);
+                }
+            }
+        });
 
     }
 }

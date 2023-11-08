@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.exceptions.EmptyQuestionsException;
+
 import org.example.exceptions.QuestionNoExistException;
 import org.example.exceptions.UserNoExistException;
 import org.example.model.Question;

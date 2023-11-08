@@ -62,6 +62,8 @@ public class Question implements Serializable {
     public int getQuantityCorrectAnswers() {
         return quantityCorrectAnswers;
     }
+    ///
+
 
     public void addCorrectAnsewrs() {
         this.quantityCorrectAnswers++;
@@ -90,7 +92,7 @@ public class Question implements Serializable {
     public String showQuestion(){
         String alternativesString = "";
         for (int i = 1; i <= this.alternatives.size(); i++){
-            alternativesString += ("\n" + i + " - " + this.getAlternatives().get(i-1));
+            alternativesString += ("\nAlternativa " + i + ":   " +this.getAlternatives().get(i-1));
         }
         return header + "\n" + alternativesString;
     }

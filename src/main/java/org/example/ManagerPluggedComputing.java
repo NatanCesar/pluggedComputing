@@ -1,18 +1,22 @@
 package org.example;
-import org.example.exceptions.EmptyQuestionsException;
+
 import org.example.exceptions.QuestionNoExistException;
 import org.example.exceptions.UserNoExistException;
+import org.example.gravadorDeDados.gravadorDeDados;
 import org.example.model.Question;
 import org.example.model.User;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Random;
+
 
 
 public class ManagerPluggedComputing implements ManagerPluggedComputingInterface, Serializable {
     HashMap<Integer, Question> questionsMap;
     HashMap<Integer, User> usersMap;
+    gravadorDeDados gravador= new gravadorDeDados();
 
     int counterIdUsers = 1;
     int counterIdQuestions = 1;
@@ -20,6 +24,7 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
     public ManagerPluggedComputing() {
         this.questionsMap = new HashMap<>();
         this.usersMap = new HashMap<>();
+        recoverData();
     }
 
 
@@ -36,7 +41,7 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
     public void removeQuestion(int idQuestion) throws QuestionNoExistException {
         if (questionsMap.containsKey(idQuestion)){
             questionsMap.remove(idQuestion);
-            counterIdQuestions--;
+
         } else {
             throw new QuestionNoExistException("Não existe nenhuma Questão com esse ID");
         }
@@ -63,13 +68,16 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
     public void addUser(User user) {
         usersMap.put(this.counterIdUsers,user);
         counterIdUsers++;
-
     }
 
     @Override
     public void removeUser(int idUser) throws UserNoExistException {
-        usersMap.remove(idUser);
-        counterIdUsers--;
+        if (usersMap.containsKey(idUser)) {
+            usersMap.remove(idUser);
+        } else{
+            throw new UserNoExistException("Não existe nenhum usuário com esse ID");
+        }
+
     }
     @Override
     public User searchUser(int idUser) throws UserNoExistException {
@@ -110,8 +118,6 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
     }
 
 
-
-
     public int getCounterIdQuestions() {
         return counterIdQuestions;
     }
@@ -126,6 +132,19 @@ public class ManagerPluggedComputing implements ManagerPluggedComputingInterface
 
     public HashMap<Integer, User> getAllUsers() {
         return usersMap;
+    }
+
+    public void recoverData(){
+        try {
+            this.questionsMap = gravador.recoverQuestions();
+            this.counterIdQuestions = questionsMap.size() + 1;
+
+            this.usersMap = gravador.recoverUsers();
+            this.counterIdUsers = usersMap.size() + 1;
+
+        } catch (IOException i){
+            i.fillInStackTrace();
+        }
     }
 
 
